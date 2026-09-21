@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Natural Products</title>
+
+<style>
+    body {
+        background-color: #f5f5dc;
+        text-align: center;
+        font-family: Arial;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: darkgreen;
+        color: white;
+        padding: 25px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 40px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+    .about {
+        background-color: white;
+        margin: 20px auto;
+        padding: 25px;
+        max-width: 800px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px gray;
+    }
+
+    .about h2 {
+        color: darkgreen;
+        font-size: 28px;
+    }
+
+    .about p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .products {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        padding: 40px 20px;
+    }
+
+    .product {
+        background-color: white;
+        width: 250px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px gray;
+    }
+
+    .product img {
+        width: 220px;
+        height: 200px;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto 15px;
+    }
+
+    .product h2 {
+        color: darkgreen;
+    }
+
+    .product p {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 20px;
+        font-weight: bold;
+        color: darkred;
+    }
+
+    button {
+        background-color: darkgreen;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: green;
+    }
+
+    /* Mobile Friendly */
+    @media (max-width: 768px) {
+        .products {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product {
+            width: 280px;
+        }
+    }
+
+    #contact {
+        background-color: white;
+        padding: 30px;
+        margin-top: 40px;
+        border-top: 3px solid darkgreen;
+    }
+
+    #contact h2 {
+        color: darkgreen;
+    }
+
+    #contact p {
+        font-size: 18px;
+    }
+
+    #contact button {
+        background-color: darkgreen;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #contact button:hover {
+        background-color: green;
+    }
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>🌿 NATURAL PRODUCTS</h1>
+    <p>Natural organic Products</p>
+</header>
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>
+        We provide natural and quality products including Zafran,
+        Green Tea and Ispaghol. Our goal is to offer fresh,
+        pure and trusted natural products to our customers.
+    </p>
+</section>
+
+<div class="products">
+
+    <div class="product">
+        <img src="zafaran.png.png" alt="Zafran">
+        <h2>Zafran</h2>
+        <p>Pure and premium quality Zafran.</p>
+        <p class="price">Price: Rs. 1,550</p>
+
+        <button onclick="orderWhatsApp('Zafran', '1,550')">
+            Buy Now
+        </button>
+    </div>
+
+    <div class="product">
+        <img src="green.png.png" alt="Green Tea">
+        <h2>Green Tea</h2>
+        <p>Fresh and natural Green Tea.</p>
+        <p class="price">Price: Rs. 850</p>
+
+        <button onclick="orderWhatsApp('Green Tea', '850')">
+            Buy Now
+        </button>
+    </div>
+
+    <div class="product">
+        <img src="ispaghol.png.png" alt="Ispaghol">
+        <h2>Ispaghol</h2>
+        <p>Natural Ispaghol husk.</p>
+        <p class="price">Price: Rs. 650</p>
+
+        <button onclick="orderWhatsApp('Ispaghol', '650')">
+            Buy Now
+        </button>
+    </div>
+
+</div>
+
+<script>
+    function orderWhatsApp(product, price) {
+
+        var name = prompt("Please enter your name:");
+
+        if (!name) {
+            return;
+        }
+
+        var quantity = prompt("Please enter quantity:");
+
+        if (!quantity) {
+            return;
+        }
+
+        var address = prompt("Please enter your delivery address:");
+
+        if (!address) {
+            return;
+        }
+
+        var phone = "923718001230";
+
+        var total =
+            parseInt(price.replace(",", "")) * parseInt(quantity);
+
+        var message =
+            "🌿 NATURAL PRODUCTS\n" +
+            "━━━━━━━━━━━━━━━━━━\n\n" +
+            "🛒 NEW ORDER\n\n" +
+            "📦 ORDER DETAILS\n" +
+            "Product: " + product + "\n" +
+            "Quantity: " + quantity + "\n" +
+            "Unit Price: Rs. " + price + "\n" +
+            "Total Amount: Rs. " + total.toLocaleString() + "\n\n" +
+            "👤 CUSTOMER DETAILS\n" +
+            "Name: " + name + "\n" +
+            "Delivery Address: " + address + "\n\n" +
+            "━━━━━━━━━━━━━━━━━━\n" +
+            "🙏 Thank you for choosing Natural Products.\n\n" +
+            "Please confirm my order.";
+
+        var whatsappURL =
+            "https://wa.me/" + phone + "?text=" +
+            encodeURIComponent(message);
+
+        window.location.href = whatsappURL;
+    }
+</script>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+
+    <p>📞 WhatsApp: 03718001230</p>
+    <p>📧 Email: naturalproducts@gmail.com</p>
+    <p>📍 Location: Karachi, Pakistan</p>
+
+    <a href="https://wa.me/923718001230" target="_blank">
+        <button>Order on WhatsApp</button>
+    </a>
+</section>
+
+</body>
+</html>
